@@ -26,7 +26,7 @@ Un repository privato non va confuso con un sito accessibile solo a te. Questa v
 
 ## GitHub
 
-Il progetto è composto da file statici ed è compatibile con un repository GitHub. Carica `index.html`, `style.css`, `app.js`, `.nojekyll` e la cartella `assets`. Non occorrono dipendenze o servizi esterni. L’eventuale pubblicazione e la scelta del controllo accessi vanno configurate sul repository di destinazione. Nessun repository o sito pubblico viene creato automaticamente da questi file.
+Il progetto è composto da file statici ed è compatibile con un repository GitHub. Carica `index.html`, `riunioni.html`, `ccdpad.html`, `style.css`, `portal.css`, `app.js`, `ccdpad.js`, `ccdpad-data.js`, `.nojekyll` e la cartella `assets`. Non occorrono dipendenze o servizi esterni. L’eventuale pubblicazione e la scelta del controllo accessi vanno configurate sul repository di destinazione. Nessun repository o sito pubblico viene creato automaticamente da questi file.
 
 ## Corrispondenza con Excel
 
@@ -43,3 +43,7 @@ Il codice è ricercabile per testo, ambito e classe. Ogni registrazione associa 
 Le misure previste dal codice sono un riferimento: la misura applicata viene inserita dall’utente, senza sommare o interpretare automaticamente i richiami o scegliere importi variabili. Ogni sanzione conserva una copia dell’articolo e della versione consultati, così eventuali futuri aggiornamenti del codice non alterano i riferimenti dei provvedimenti salvati. È possibile modificare, stampare in PDF con timbro ed eliminare con conferma una registrazione.
 
 Le sanzioni sono salvate localmente nella chiave `difesa-sanzioni-v1`. I loro backup sono separati dai backup delle riunioni: esporta entrambi per conservare l’intero archivio. I backup delle riunioni già esistenti continuano a funzionare. Nessun dato di sanzioni è incluso nel repository; il registro parte vuoto. Per aggiornare il sito su GitHub, includi anche `ccdpad.html`, `ccdpad.js` e `ccdpad-data.js`.
+
+## Pagina iniziale e navigazione
+
+`index.html` è la pagina di scelta, senza login o credenziali. Le due aree sono `riunioni.html` (riunioni e archivio) e `ccdpad.html` (codice e sanzioni). Il collegamento «Cambia sezione» e lo stemma nelle pagine interne riportano alla home. La home non scrive negli archivi. Le chiavi di salvataggio restano invariate: servendo le pagine sullo stesso indirizzo di origine, i dati già salvati rimangono disponibili. La navigazione e i moduli sono adattati a desktop e telefono, con focus da tastiera e collegamento per saltare al contenuto.

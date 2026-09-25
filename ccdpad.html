@@ -4,18 +4,19 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071f4b"><meta name="description" content="CCDPAD e registro personale delle sanzioni del Dipartimento della Difesa, FiveM Roleplay.">
   <title>Dipartimento della Difesa · CCDPAD</title>
-  <link rel="icon" href="assets/stemma-difesa.png"><link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/stemma-difesa.png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="portal.css">
   <script src="ccdpad-data.js" defer></script><script src="ccdpad.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Vai al contenuto</a>
   <aside class="sidebar">
     <a class="identity" href="index.html"><img src="assets/stemma-difesa.png" alt="Stemma del Dipartimento della Difesa"><span>DIPARTIMENTO<br>DELLA DIFESA<small>FIVEM · ROLEPLAY</small></span></a>
-    <div class="nav-label">01 · RIUNIONI E VERBALI</div><nav aria-label="Riunioni"><a class="nav-item" href="index.html"><span>▤</span> Riunioni e archivio</a></nav>
-    <div class="nav-label section-nav-label">02 · CONDOTTA E DISCIPLINA</div><nav aria-label="CCDPAD"><button class="nav-item active" data-tab="register"><span>▣</span> Registro sanzioni <b id="sanction-count">0</b></button><button class="nav-item" data-tab="code"><span>§</span> Consulta CCDPAD</button></nav>
+    <a class="back-home" href="index.html">← Cambia sezione</a>
+    <div class="nav-label">CONDOTTA E DISCIPLINA</div><nav aria-label="CCDPAD"><button class="nav-item active" data-tab="register"><span>▣</span> Registro sanzioni <b id="sanction-count">0</b></button><button class="nav-item" data-tab="code"><span>§</span> Consulta CCDPAD</button></nav>
     <div class="sidebar-bottom"><div class="local-label"><span></span> Archivio su questo dispositivo</div><p>Le sanzioni restano in questo browser. Il backup di questa sezione è separato dalle riunioni.</p><button id="export-sanctions" class="sidebar-button">↓ Esporta backup sanzioni</button><button id="import-sanctions" class="sidebar-button">↑ Importa backup sanzioni</button><input type="file" id="sanction-file" accept=".json,application/json" hidden><small>AMBIENTAZIONE DI GIOCO · USO PERSONALE</small></div>
   </aside>
-  <div class="workspace"><header class="topbar"><span>Ufficio di coordinamento <span class="divider">/</span> <strong>Condotta e disciplina</strong></span><span class="private-tag">ARCHIVIO LOCALE</span></header>
-  <main>
+  <div class="workspace"><header class="topbar"><span><a href="index.html">Portale</a> <span class="divider">/</span> <strong>Condotta e disciplina</strong></span><span class="private-tag">ARCHIVIO LOCALE</span></header>
+  <main id="main">
     <section class="page-heading"><div><div class="eyebrow">DIPARTIMENTO DELLA DIFESA · CCDPAD</div><h1 id="discipline-title">Registro sanzioni</h1><p>Provvedimenti applicati, membri interessati e riferimenti al codice.</p></div><button id="new-sanction" class="button primary">＋ Registra sanzione</button></section>
     <div class="code-notice"><strong id="code-version"></strong><span id="code-approval"></span><span id="code-classification"></span></div>
     <section id="register-panel">

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071f4b"><meta name="description" content="Archivio personale delle riunioni del Dipartimento della Difesa — FiveM Roleplay.">
+  <title>Dipartimento della Difesa · Riunioni</title>
+  <link rel="icon" href="assets/stemma-difesa.png"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="portal.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Vai al contenuto</a>
+  <aside class="sidebar">
+    <a class="identity" href="index.html" aria-label="Torna alla pagina iniziale"><img src="assets/stemma-difesa.png" alt="Stemma del Dipartimento della Difesa"><span>DIPARTIMENTO<br>DELLA DIFESA<small>FIVEM · ROLEPLAY</small></span></a>
+    <a class="back-home" href="index.html">← Cambia sezione</a><div class="nav-label">RIUNIONI E VERBALI</div>
+    <nav aria-label="Navigazione principale"><button class="nav-item active" data-view="active"><span>▤</span> Riunioni <b id="active-count">0</b></button><button class="nav-item" data-view="archive"><span>▣</span> Archivio personale <b id="archive-count">0</b></button></nav>
+    <div class="sidebar-bottom"><div class="local-label"><span></span> Archivio su questo dispositivo</div><p>I tuoi verbali sono salvati in questo browser. Esporta un backup per conservarli.</p><button id="backup" class="sidebar-button">↓ Esporta backup riunioni</button><button id="restore" class="sidebar-button">↑ Importa backup riunioni</button><input id="backup-file" type="file" accept="application/json,.json" hidden><small>AMBIENTAZIONE DI GIOCO · USO PERSONALE</small></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span><a href="index.html">Portale</a> <span class="divider">/</span> <strong>Registro riunioni</strong></span><span class="private-tag">ARCHIVIO LOCALE</span></header>
+    <main id="main">
+      <section class="page-heading"><div><div class="eyebrow">DIPARTIMENTO DELLA DIFESA</div><h1 id="page-title">Riunioni</h1><p id="page-description">Ordini del giorno, presenze e decisioni. Tutto in un unico registro.</p></div><button id="new-meeting" class="button primary">＋ Nuova riunione</button></section>
+      <section class="stats" aria-label="Riepilogo"><div><span>Riunioni attive</span><strong id="stat-active">0</strong><small>Nel registro di lavoro</small></div><div><span>Azioni da completare</span><strong id="stat-actions">0</strong><small>Da fare e in corso</small></div><div><span>Verbali archiviati</span><strong id="stat-archived">0</strong><small>Nel tuo archivio personale</small></div></section>
+      <section class="register"><div class="register-toolbar"><h2 id="list-title">Registro operativo</h2><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Cerca oggetto, protocollo, reparto…" aria-label="Cerca riunioni"></label></div><div id="meeting-list"></div></section>
+      <section class="document-note"><img src="assets/stemma-difesa.png" alt=""><div><strong>Il tuo archivio di lavoro</strong><p>Conserva una copia dei verbali con “Esporta backup riunioni”.</p></div><span>REGISTRO PERSONALE<br><b>DEPARTMENT OF DEFENSE</b></span></section>
+    </main>
+    <footer>Dipartimento della Difesa <span>FiveM Roleplay · Nessuna affiliazione con enti reali</span></footer>
+  </div>
+  <dialog id="editor"><form id="meeting-form"><div class="editor-head"><div><div class="eyebrow">SCHEDA RIUNIONE</div><h2 id="editor-title">Nuova riunione</h2></div><button type="button" id="close-editor" class="icon-button" aria-label="Chiudi scheda">×</button></div><div class="editor-body">
+    <div class="section-heading"><span>01</span><h3>Dati dell’incontro</h3></div>
+    <div class="form-grid"><label class="full">Oggetto<input name="title" required maxlength="250" placeholder="Oggetto della riunione"></label><label>Data<input name="date" type="date" required></label><label>Orario<input name="time" type="time"></label><label>Luogo<input name="location" maxlength="250" placeholder="Es. Discord del Governo"></label><label>Protocollo<input name="protocol" maxlength="80" placeholder="Es. UDC-002"></label><label>Presiede<input name="chair" maxlength="250"></label><label>Verbalizza<input name="secretary" maxlength="250"></label></div>
+    <div class="section-heading"><span>02</span><h3>Ordine del giorno</h3></div><label>Un punto per riga<textarea name="agenda" rows="5" placeholder="Apertura e obiettivi della riunione"></textarea></label>
+    <div class="section-heading"><span>03</span><h3>Presenze</h3><button type="button" id="add-person" class="button small">＋ Partecipante</button></div><div id="people"></div>
+    <div class="section-heading"><span>04</span><h3>Interventi e azioni</h3><button type="button" id="add-action" class="button small">＋ Intervento</button></div><div id="actions"></div>
+    <div class="section-heading"><span>05</span><h3>Conclusioni</h3></div><div class="conclusions"><label>Decisioni confermate<textarea name="decisions" rows="3"></textarea></label><label>Questioni da approfondire<textarea name="questions" rows="3"></textarea></label><label>Prossimo aggiornamento / comunicazione<textarea name="next" rows="2"></textarea></label></div>
+  </div><div class="editor-foot"><span id="save-hint">Salva la scheda per conservare le modifiche.</span><button class="button primary" type="submit">Salva riunione</button></div></form></dialog>
+  <dialog id="confirm-dialog"><div class="confirm-body"><h2 id="confirm-title"></h2><p id="confirm-text"></p><div class="confirm-actions"><button id="confirm-cancel" class="button">Annulla</button><button id="confirm-ok" class="button primary">Conferma</button></div></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div><article id="print-document"></article>
+</body>
+</html>
