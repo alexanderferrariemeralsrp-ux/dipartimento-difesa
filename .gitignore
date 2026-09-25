@@ -1,4 +1,5 @@
 node_modules/
 .test-output/
 difesa-backup-*.json
+difesa-sanzioni-backup-*.json
 *.log

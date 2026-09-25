@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071f4b"><meta name="description" content="CCDPAD e registro personale delle sanzioni del Dipartimento della Difesa, FiveM Roleplay.">
+  <title>Dipartimento della Difesa · CCDPAD</title>
+  <link rel="icon" href="assets/stemma-difesa.png"><link rel="stylesheet" href="style.css">
+  <script src="ccdpad-data.js" defer></script><script src="ccdpad.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="identity" href="index.html"><img src="assets/stemma-difesa.png" alt="Stemma del Dipartimento della Difesa"><span>DIPARTIMENTO<br>DELLA DIFESA<small>FIVEM · ROLEPLAY</small></span></a>
+    <div class="nav-label">01 · RIUNIONI E VERBALI</div><nav aria-label="Riunioni"><a class="nav-item" href="index.html"><span>▤</span> Riunioni e archivio</a></nav>
+    <div class="nav-label section-nav-label">02 · CONDOTTA E DISCIPLINA</div><nav aria-label="CCDPAD"><button class="nav-item active" data-tab="register"><span>▣</span> Registro sanzioni <b id="sanction-count">0</b></button><button class="nav-item" data-tab="code"><span>§</span> Consulta CCDPAD</button></nav>
+    <div class="sidebar-bottom"><div class="local-label"><span></span> Archivio su questo dispositivo</div><p>Le sanzioni restano in questo browser. Il backup di questa sezione è separato dalle riunioni.</p><button id="export-sanctions" class="sidebar-button">↓ Esporta backup sanzioni</button><button id="import-sanctions" class="sidebar-button">↑ Importa backup sanzioni</button><input type="file" id="sanction-file" accept=".json,application/json" hidden><small>AMBIENTAZIONE DI GIOCO · USO PERSONALE</small></div>
+  </aside>
+  <div class="workspace"><header class="topbar"><span>Ufficio di coordinamento <span class="divider">/</span> <strong>Condotta e disciplina</strong></span><span class="private-tag">ARCHIVIO LOCALE</span></header>
+  <main>
+    <section class="page-heading"><div><div class="eyebrow">DIPARTIMENTO DELLA DIFESA · CCDPAD</div><h1 id="discipline-title">Registro sanzioni</h1><p>Provvedimenti applicati, membri interessati e riferimenti al codice.</p></div><button id="new-sanction" class="button primary">＋ Registra sanzione</button></section>
+    <div class="code-notice"><strong id="code-version"></strong><span id="code-approval"></span><span id="code-classification"></span></div>
+    <section id="register-panel">
+      <div class="stats"><div><span>Sanzioni registrate</span><strong id="total-sanctions">0</strong><small>Storico completo</small></div><div><span>In corso</span><strong id="active-sanctions">0</strong><small>Provvedimenti da seguire</small></div><div><span>Membri interessati</span><strong id="total-members">0</strong><small>Identificati per matricola / ID</small></div></div>
+      <section class="register"><div class="register-toolbar"><h2>Provvedimenti disciplinari</h2><label class="search"><span aria-hidden="true">⌕</span><input id="sanction-search" type="search" aria-label="Cerca sanzioni" placeholder="Membro, ID, reparto, articolo…"></label><label class="filter-label">Stato<select id="status-filter"><option value="">Tutti gli stati</option><option>In corso</option><option>Eseguita</option><option>Revocata</option></select></label></div><div id="sanction-list"></div></section>
+    </section>
+    <section id="code-panel" hidden>
+      <div class="code-heading"><h2 id="code-full-title"></h2><p id="code-subtitle"></p></div>
+      <div class="code-filters"><label>Cerca nel codice<input id="code-search" type="search" placeholder="Articolo, titolo o descrizione"></label><label>Ambito<select id="group-filter"><option value="">Tutti gli ambiti</option><option>Apicali</option><option>Direzionali</option><option>Clausole generali</option></select></label><label>Classe<select id="level-filter"><option value="">Tutte le classi</option><option>L1</option><option>M2</option><option>G3</option><option>VG4</option><option>X5</option></select></label></div>
+      <p id="article-count" class="result-count" aria-live="polite"></p><div id="article-list"></div><section class="code-notes"><h2>Note e classi del documento</h2><dl id="code-notes"></dl></section>
+    </section>
+  </main><footer>Dipartimento della Difesa <span>FiveM Roleplay · Nessuna affiliazione con enti reali</span></footer></div>
+  <dialog id="sanction-editor"><form id="sanction-form"><div class="editor-head"><div><div class="eyebrow">PROVVEDIMENTO DISCIPLINARE</div><h2 id="sanction-editor-title">Registra sanzione</h2></div><button type="button" id="close-sanction" class="icon-button" aria-label="Chiudi scheda">×</button></div><div class="editor-body">
+    <div class="section-heading"><span>01</span><h3>Membro interessato</h3></div><div class="form-grid"><label>Nome e cognome RP<input name="member" required maxlength="250"></label><label>Matricola / ID membro<input name="memberId" required maxlength="100" placeholder="Identificativo univoco del membro"></label><label>Reparto<input name="department" required maxlength="250"></label><label>Grado / incarico<input name="role" maxlength="250"></label></div>
+    <div class="section-heading"><span>02</span><h3>Riferimento al CCDPAD</h3></div><label>Articolo contestato<select id="article-select" name="articleId" required></select></label><div id="article-preview" class="article-preview"></div>
+    <div class="section-heading"><span>03</span><h3>Sanzione applicata</h3></div><div class="form-grid"><label>Protocollo<input name="protocol" required maxlength="100" placeholder="Es. DISC-001"></label><label>Data del provvedimento<input name="date" type="date" required></label><label class="full">Motivazione e fatti accertati<textarea name="reason" required rows="3" maxlength="20000"></textarea></label><label>Importo applicato ($ RP)<input name="amount" type="number" min="0" max="1000000000" step="0.01" placeholder="Vuoto se non applicabile"></label><label>Sanzione interna applicata<input name="internal" maxlength="1000" placeholder="Misura effettivamente disposta"></label><label>Disposto da<input name="issuer" required maxlength="250"></label><label>Stato<select name="status"><option>In corso</option><option>Eseguita</option><option>Revocata</option></select></label><label>Decorrenza<input name="start" type="date"></label><label>Termine / scadenza<input name="end" type="date"></label><label class="full">Note, riferimenti agli atti ed eventuale revoca<textarea name="notes" rows="3" maxlength="20000"></textarea></label></div>
+  </div><div class="editor-foot"><span>Registra la misura effettiva consultando il riferimento sopra.</span><button type="submit" class="button primary">Salva sanzione</button></div></form></dialog>
+  <dialog id="confirm-dialog"><div class="confirm-body"><h2 id="confirm-title"></h2><p id="confirm-text"></p><div class="confirm-actions"><button id="confirm-cancel" class="button">Annulla</button><button id="confirm-ok" class="button primary">Conferma</button></div></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div><article id="print-document"></article>
+</body></html>

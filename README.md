@@ -33,3 +33,13 @@ Il progetto è composto da file statici ed è compatibile con un repository GitH
 Il foglio «Riunione» corrisponde alle sezioni Dati dell’incontro, Ordine del giorno, Presenze e Conclusioni. Il foglio «Interventi e azioni» corrisponde al registro degli interventi nella scheda. Partecipanti e interventi si aggiungono liberamente, senza i limiti delle righe del foglio. Il sito non modifica il file Excel e non importa file XLSX: il ripristino riguarda i propri backup JSON.
 
 Materiale destinato esclusivamente all’ambientazione FiveM RP, senza affiliazione con enti reali.
+
+## CCDPAD e registro sanzioni
+
+La seconda pagina `ccdpad.html` è separata dalle riunioni e contiene i 32 articoli del file «Codice di Condotta e Disciplina per le Posizioni Apicali e Direzionali.xlsx». Testi, codici (inclusa la virgola negli identificativi delle clausole generali), classi, importi, note e diciture di versione sono conservati come nella fonte: **Versione BETA 0.1, non approvata, 25 Settembre 2026**. La classificazione riportata è una dicitura del documento RP, non un controllo tecnico degli accessi.
+
+Il codice è ricercabile per testo, ambito e classe. Ogni registrazione associa un membro (nome RP e matricola/ID univoco), reparto e incarico a un articolo, protocollo, motivazione, importo e/o misura interna effettivamente applicati, responsabile, decorrenza, scadenza e stato. Usa lo stesso ID per tutte le sanzioni di un membro; la ricerca per ID ne mostra lo storico. Gli stati sono In corso, Eseguita e Revocata e vengono aggiornati manualmente. La scadenza non cambia automaticamente lo stato.
+
+Le misure previste dal codice sono un riferimento: la misura applicata viene inserita dall’utente, senza sommare o interpretare automaticamente i richiami o scegliere importi variabili. Ogni sanzione conserva una copia dell’articolo e della versione consultati, così eventuali futuri aggiornamenti del codice non alterano i riferimenti dei provvedimenti salvati. È possibile modificare, stampare in PDF con timbro ed eliminare con conferma una registrazione.
+
+Le sanzioni sono salvate localmente nella chiave `difesa-sanzioni-v1`. I loro backup sono separati dai backup delle riunioni: esporta entrambi per conservare l’intero archivio. I backup delle riunioni già esistenti continuano a funzionare. Nessun dato di sanzioni è incluso nel repository; il registro parte vuoto. Per aggiornare il sito su GitHub, includi anche `ccdpad.html`, `ccdpad.js` e `ccdpad-data.js`.
